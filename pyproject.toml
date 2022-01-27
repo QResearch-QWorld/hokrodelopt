@@ -1,0 +1,20 @@
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.venv
+  | venv
+)/
+'''
+
+[tool.isort]
+line_length = 100
+profile = "black"
+filter_files = true
+
+[tool.mypy]
+exclude = ['venv', '.venv']
+ignore_missing_imports = true

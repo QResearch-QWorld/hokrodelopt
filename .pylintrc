@@ -1,0 +1,10 @@
+[MESSAGES CONTROL]
+disable=all
+enable=spelling,
+       wrong-spelling-in-comment,
+       wrong-spelling-in-docstring,
+       invalid-characters-in-docstring
+
+[SPELLING]
+spelling-dict=en_US
+spelling-ignore-words=hokrodelopt

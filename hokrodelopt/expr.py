@@ -4,20 +4,12 @@ import sympy
 class HOBOExpr:
     "for general expressions"
 
-    def __new__(cls, name):
-        if isinstance(name, str):
-            expr = sympy.Symbol(name)
-        else:
-            expr = sympy.Symbol(str(name))
-
-        return expr
-
-    def __init__(self, name):
-        super(HOBOExpr, self).__init__()
+    def __init__(self, expr):
+        self.expr = expr
 
     def __add__(self, other):
         """for expressions of the form (var1 + var2)"""
-        return sympy.Add(self, other)
+        return HOBOExpr(self.expr + other.expr)
 
     def __radd__(self, other):
         """for expressions of the form (var1 + var2) from right"""
@@ -25,7 +17,7 @@ class HOBOExpr:
 
     def __mul__(self, other):
         """for expressions of the form (var1 * var2)"""
-        return sympy.Mul(self, other)
+        return HOBOExpr(self.expr * other.expr)
 
     def __rmul__(self, other):
         """for expressions of the form (var1 * var2) from right"""
@@ -37,7 +29,22 @@ class HOBOExpr:
 
     def __pow__(self, order):
         """for expressions of the form (base ** exponent)"""
-        return sympy.Pow(self, order)
+        if isinstance(order, int) and order >= 1:
+            return HOBOExpr(self.expr ** order.expr)
+        else:
+            return sympy.Integer(1)
+
+    def __div__(self, other):
+        """for expressions of the form (var1 - var2)"""
+        return HOBOExpr(self.expr / other.expr)
+
+    def __neg__(self):
+        """for expressions of the form (-var)"""
+        return HOBOExpr(self.expr * sympy.Integer(-1))
+
+    def __pos__(self):
+        """for expressions of the form (+var)"""
+        return HOBOExpr(self.expr)
 
 
 class BinVar(HOBOExpr):

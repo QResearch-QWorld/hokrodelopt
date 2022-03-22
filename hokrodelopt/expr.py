@@ -2,7 +2,7 @@ import sympy
 
 
 class HOBOExpr:
-    "for general expressions"
+    """for general expressions"""
 
     def __init__(self, expr):
         self.expr = expr
@@ -30,7 +30,7 @@ class HOBOExpr:
     def __pow__(self, order):
         """for expressions of the form (base ** exponent)"""
         if isinstance(order, int) and order >= 1:
-            return HOBOExpr(self.expr ** order.expr)
+            return HOBOExpr(self.expr ** sympy.Integer(order))
         else:
             return sympy.Integer(1)
 

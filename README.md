@@ -1,6 +1,6 @@
 # hokrodelopt
 
-[//]: # ([![codecov]&#40;https://codecov.io/gh/QResearch-QWorld/hokrodelopt/branch/main/graph/badge.svg?token=?&#41;]&#40;https://codecov.io/gh/QResearch-QWorld/hokrodelopt&#41;)
+[![codecov](https://codecov.io/gh/QResearch-QWorld/hokrodelopt/branch/main/graph/badge.svg)](https://codecov.io/gh/QResearch-QWorld/hokrodelopt)
 [![Actions Status: Static code analysis](https://github.com/QResearch-QWorld/hokrodelopt/workflows/Static%20code%20analysis/badge.svg)](https://github.com/QResearch-QWorld/hokrodelopt/actions?query=workflow%3A"Static+code+analysis")
 [![Actions Status: Tests](https://github.com/QResearch-QWorld/hokrodelopt/workflows/Tests/badge.svg)](https://github.com/QResearch-QWorld/hokrodelopt/actions?query=workflow%3A"Tests")
 

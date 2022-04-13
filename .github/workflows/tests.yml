@@ -20,7 +20,7 @@ jobs:
           pip install .[test]
       - name: Unit tests
         run: pytest --cov=hokrodelopt --cov-report=xml
-#      - name: Coverage report
-#        uses: codecov/codecov-action@v2
-#        with:
-#          fail_ci_if_error: true
+      - name: Coverage report
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true

@@ -142,8 +142,10 @@ class BinVar(HOBOVar):
         HOBOVar.set_lims(self, 0, 1)
 
 
-class SpinVar(HOBOExpr):
-    pass
+class SpinVar(HOBOVar):  
+    def __init__(self, name, lb= None, ub= None):
+        HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
+        HOBOVar.set_lims(self, -1, 1)
 
 
 class IntVar(HOBOExpr):

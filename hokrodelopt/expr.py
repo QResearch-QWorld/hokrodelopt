@@ -53,6 +53,78 @@ class HOBOExpr:
         return HOBOExpr(self.expr)
 
 
+class HOBOVar:
+    '''
+    Examples
+    --------
+    >>> HOBOVar('x', lb=-10, ub=10)
+    '-10 <= x <= 10'
+    '''
+    @staticmethod
+    def __is_valid_var_name(name):
+        if len(name) < 1:
+            raise ValueError(
+                "a varible name shouldn't be empty."
+            )
+
+        for char in name:
+            if char.isspace() == True:
+                raise ValueError(
+                    "a variable name shouldn't contain any spaces in it."
+                )
+
+    @staticmethod
+    def __is_valid_var_lim(val):
+        if not (val is None or isinstance(val, (int, float))):
+            raise ValueError(
+                "variable limits must be numerical or None."
+            )
+
+    def __init__(self, name, lb, ub):
+        HOBOExpr.__init__()
+        self.name = name
+        self.lb = lb
+        self.ub = ub
+
+    @property
+    def name(self):
+        '''
+        The variable name.
+        '''
+        return self.name
+
+    @name.setter
+    def name(self, name):
+        self.__is_valid_var_name(name)
+        self.name = name
+
+    @property
+    def lb(self):
+        return self.lb
+
+    @lb.setter
+    def lb(self, val):
+        self.__is_valid_var_lim(val)
+        self.lb = val
+
+    @property
+    def ub(self):
+        return self.ub
+
+    @ub.setter
+    def ub(self, val):
+        self.__is_valid_var_lim(val)
+        self.ub = val
+
+    def set_lims(self, lb, ub):
+        if lb is not None and ub is not None and lb > ub:
+            raise ValueError(
+                "The given lower bound {} shouldn't be greater than the given ubber bound {}.".format(lb, ub)
+            )
+
+        self.lb = lb
+        self.ub = ub
+
 class BinVar(HOBOExpr):
     pass
 

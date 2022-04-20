@@ -2,7 +2,17 @@ import sympy as sm
 
 
 class HOBOExpr:
-    """for general expressions"""
+    '''
+    It construct expressions using sympy.
+
+    please refer to the sympy core:
+        https://docs.sympy.org/latest/modules/core.html
+
+    and to sympy logic:
+        https://docs.sympy.org/dev/modules/logic.html
+
+    '''
+
 
     def __init__(self, expr):
         self.expr = expr
@@ -51,7 +61,6 @@ class HOBOExpr:
     def __pos__(self):
         """for expressions of the form (+var)"""
         return HOBOExpr(self.expr)
-
 
 class HOBOVar:
     '''

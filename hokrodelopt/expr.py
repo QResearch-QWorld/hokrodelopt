@@ -125,8 +125,21 @@ class HOBOVar:
         self.lb = lb
         self.ub = ub
 
-class BinVar(HOBOExpr):
-    pass
+    def __str__(self):
+        if self.lb is not None:
+            lb_str = str(self.lb) + " <= "
+        else:
+            lb_str = ""
+        if self.ub is not None:
+            ub_str = " <= " + str(self.ub)
+        else:
+            ub_str = ""
+        return ''.join((lb_str, super(HOBOVar, self).__str__(), ub_str))
+
+class BinVar(HOBOVar):  
+    def __init__(self, name, lb= None, ub= None):
+        HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
+        HOBOVar.set_lims(self, 0, 1)
 
 
 class SpinVar(HOBOExpr):

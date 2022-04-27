@@ -60,7 +60,7 @@ class HOBOExpr:
         """for expressions of the form (+var)"""
         return HOBOExpr(self.expr)
 
-class HOBOVar:
+class HOBOVar(HOBOExpr):
     '''
     Examples
     --------
@@ -88,7 +88,7 @@ class HOBOVar:
             )
 
     def __init__(self, name, lb, ub):
-        HOBOExpr.__init__()
+        HOBOExpr.__init__(self)
         self.name = name
         self.lb = lb
         self.ub = ub

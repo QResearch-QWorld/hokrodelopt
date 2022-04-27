@@ -12,8 +12,6 @@ class HOBOExpr:
         https://docs.sympy.org/dev/modules/logic.html
 
     '''
-
-
     def __init__(self, expr):
         self.expr = expr
 
@@ -158,7 +156,7 @@ class SpinVar(HOBOVar):
 
 
 class IntVar(HOBOVar):  
-    def __init__(self, name, lb= None, ub= None):
+    def __init__(self, name, lb= None, ub):
         HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
-        HOBOVar.set_lims(self, 0, self._ub)
+        HOBOVar.set_lims(self, 0, self.ub)
 

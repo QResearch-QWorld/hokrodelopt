@@ -123,7 +123,7 @@ class HOBOVar(HOBOExpr):
     def set_lims(self, lb, ub):
         if lb is not None and ub is not None and lb > ub:
             raise ValueError(
-                "The lower bound {} shouldn't be greater than the ubber bound {}.".format(lb, ub)
+                "The lower bound {} can't be greater than the ubber bound {}.".format(lb, ub)
             )
 
         self.lb = lb

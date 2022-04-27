@@ -2,7 +2,7 @@ import sympy as sm
 
 
 class HOBOExpr:
-    '''
+    """
     It construct expressions using sympy.
 
     please refer to the sympy core:
@@ -11,7 +11,8 @@ class HOBOExpr:
     and to sympy logic:
         https://docs.sympy.org/dev/modules/logic.html
 
-    '''
+    """
+
     def __init__(self, expr):
         self.expr = expr
 
@@ -60,32 +61,28 @@ class HOBOExpr:
         """for expressions of the form (+var)"""
         return HOBOExpr(self.expr)
 
+
 class HOBOVar(HOBOExpr):
-    '''
+    """
     Examples
     --------
     >>> HOBOVar('x', lb=-10, ub=10)
     '-10 <= x <= 10'
-    '''
+    """
+
     @staticmethod
     def __is_valid_var_name(name):
         if len(name) < 1:
-            raise ValueError(
-                "a varible name shouldn't be empty."
-            )
+            raise ValueError("a varible name shouldn't be empty.")
 
         for char in name:
             if char.isspace() == True:
-                raise ValueError(
-                    "a variable name shouldn't contain any spaces in it."
-                )
+                raise ValueError("a variable name shouldn't contain any spaces in it.")
 
     @staticmethod
     def __is_valid_var_lim(val):
         if not (val is None or isinstance(val, (int, float))):
-            raise ValueError(
-                "variable limits must be numerical or None."
-            )
+            raise ValueError("variable limits must be numerical or None.")
 
     def __init__(self, name, lb, ub):
         HOBOExpr.__init__(self)
@@ -95,9 +92,9 @@ class HOBOVar(HOBOExpr):
 
     @property
     def name(self):
-        '''
+        """
         The variable name.
-        '''
+        """
         return self.name
 
     @name.setter
@@ -126,7 +123,9 @@ class HOBOVar(HOBOExpr):
     def set_lims(self, lb, ub):
         if lb is not None and ub is not None and lb > ub:
             raise ValueError(
-                "The given lower bound {} shouldn't be greater than the given ubber bound {}.".format(lb, ub)
+                "The given lower bound {} shouldn't be greater than the given ubber bound {}.".format(
+                    lb, ub
+                )
             )
 
         self.lb = lb
@@ -141,22 +140,22 @@ class HOBOVar(HOBOExpr):
             ub_str = " <= " + str(self.ub)
         else:
             ub_str = ""
-        return ''.join((lb_str, super(HOBOVar, self).__str__(), ub_str))
+        return "".join((lb_str, super(HOBOVar, self).__str__(), ub_str))
 
-class BinVar(HOBOVar):  
-    def __init__(self, name, lb= None, ub= None):
+
+class BinVar(HOBOVar):
+    def __init__(self, name, lb=None, ub=None):
         HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
         HOBOVar.set_lims(self, 0, 1)
 
 
-class SpinVar(HOBOVar):  
-    def __init__(self, name, lb= None, ub= None):
+class SpinVar(HOBOVar):
+    def __init__(self, name, lb=None, ub=None):
         HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
         HOBOVar.set_lims(self, -1, 1)
 
 
-class IntVar(HOBOVar):  
-    def __init__(self, name, ub, lb= None):
+class IntVar(HOBOVar):
+    def __init__(self, name, ub, lb=None):
         HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
         HOBOVar.set_lims(self, 0, self.ub)
-

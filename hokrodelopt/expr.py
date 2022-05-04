@@ -3,7 +3,7 @@ import sympy as sm
 
 class HOBOExpr:
     """
-    It construct expressions using sympy.
+    It constructs expressions using sympy.
 
     please refer to the sympy core:
         https://docs.sympy.org/latest/modules/core.html

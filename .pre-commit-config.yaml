@@ -33,4 +33,3 @@ repos:
       - id: pylint
         args: [ "./**/*.py" ]
         additional_dependencies:
-          - pyenchant

@@ -1,3 +1,4 @@
+from ast import expr
 import sympy as sm
 
 
@@ -84,8 +85,8 @@ class HOBOVar(HOBOExpr):
         if not (val is None or isinstance(val, (int, float))):
             raise ValueError("variable limits must be numerical or None.")
 
-    def __init__(self, name, lb, ub):
-        HOBOExpr.__init__(self)
+    def __init__(self, name, expr, lb, ub):
+        HOBOExpr.__init__(self, expr)
         self.name = name
         self.lb = lb
         self.ub = ub

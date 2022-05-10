@@ -58,7 +58,7 @@ class HOBOExpr:
 
     def __neg__(self):
         """for expressions of the form (-var)"""
-        return HOBOExpr(self.expr * sm.Integer(-1))
+        return HOBOExpr(-self.expr)
 
     def __pos__(self):
         """for expressions of the form (+var)"""

@@ -51,7 +51,10 @@ class HOBOExpr:
 
     def __div__(self, other):
         """for expressions of the form (var1 / var2)"""
-        return HOBOExpr(self.expr / sm.Float(other))
+        if isinstance(other, int) or isinstance(other, float):
+            return HOBOExpr(self.expr / sm.Float(other))
+        else:
+            raise TypeError("You can only divide by a number")
 
     def __neg__(self):
         """for expressions of the form (-var)"""

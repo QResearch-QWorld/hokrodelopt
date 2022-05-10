@@ -75,7 +75,7 @@ class HOBOVar(HOBOExpr):
 
     @staticmethod
     def __is_valid_var_name(name):
-        if len(name) < 1:
+        if len(name) == 0:
             raise ValueError("a varible name shouldn't be empty.")
 
         for char in name:

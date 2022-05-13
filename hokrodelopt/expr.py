@@ -162,6 +162,5 @@ class SpinVar(HOBOVar):
 
 
 class IntVar(HOBOVar):
-    def __init__(self, name, ub, lb=None):
-        HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
-        HOBOVar.set_lims(self, 0, self.ub)
+    def __init__(self, name, ub):
+        HOBOVar.__init__(self, name=name, lb=0, ub=ub)

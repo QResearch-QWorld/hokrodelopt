@@ -36,15 +36,13 @@ class HOBOExpr:
         """for expressions of the form (var1 - var2)"""
         return self.__add__(-other)
 
-    def __pow__(self, order):
+    def __pow__(self, order: int):
         """for expressions of the form (base ** exponent)"""
-        if isinstance(self, int) and isinstance(order, int) and order >= 0:
+        if isinstance(self, int) and order >= 0:
             return sm.Integer(self) ** sm.Integer(order)
-        elif isinstance(self, int) and isinstance(order, int) and order < 0:
-            return sm.Integer(1) / (sm.Integer(self) ** sm.Integer(abs(order)))
-        elif isinstance(order, int) and order >= 1:
+        elif order >= 1:
             return HOBOExpr(self.expr ** sm.Integer(order))
-        elif isinstance(order, int) and order == 0:
+        elif order == 0:
             return sm.Integer(1)
         else:
             raise TypeError("order cannot be negative.")

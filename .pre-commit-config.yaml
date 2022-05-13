@@ -35,3 +35,4 @@ repos:
         args: [ "./**/*.py" ]
         additional_dependencies:
           - pyenchant
+          

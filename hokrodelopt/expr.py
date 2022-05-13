@@ -95,7 +95,11 @@ class HOBOVar(HOBOExpr):
 
     def __init__(self, name, expr, lb, ub):
         HOBOExpr.__init__(self, expr)
+        self.__is_valid_var_name(name)
         self.name = name
+        self.__is_valid_var_lim(lb)
+        self.__is_valid_var_lim(ub)
+        self._compare_lims(lb, ub)
         self.lb = lb
         self.ub = ub
 

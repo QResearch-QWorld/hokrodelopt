@@ -157,9 +157,8 @@ class BinVar(HOBOVar):
         HOBOVar.__init__(self, name=name, lb=0, ub=1)
 
 class SpinVar(HOBOVar):
-    def __init__(self, name, lb=None, ub=None):
-        HOBOVar.__init__(self, name=name, lb=lb, ub=ub)
-        HOBOVar.set_lims(self, -1, 1)
+    def __init__(self, name):
+        HOBOVar.__init__(self, name=name, lb=-1, ub=1)
 
 
 class IntVar(HOBOVar):

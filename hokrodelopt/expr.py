@@ -1,4 +1,3 @@
-from typing_extensions import Self
 import sympy as sm
 
 
@@ -155,6 +154,7 @@ class HOBOVar(HOBOExpr):
 class BinVar(HOBOVar):
     def __init__(self, name):
         HOBOVar.__init__(self, name=name, lb=0, ub=1)
+
 
 class SpinVar(HOBOVar):
     def __init__(self, name):

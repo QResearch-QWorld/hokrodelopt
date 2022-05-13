@@ -1,3 +1,4 @@
+from typing_extensions import Self
 import sympy as sm
 
 
@@ -84,6 +85,13 @@ class HOBOVar(HOBOExpr):
     def __is_valid_var_lim(val):
         if not (val is None or isinstance(val, (int, float))):
             raise ValueError("variable limits must be numerical or None.")
+
+    @staticmethod
+    def _compare_lims(lb, ub):
+        if lb is not None and ub is not None and lb > ub:
+            raise ValueError(
+                "The lower bound {} can't be greater than the upper bound {}.".format(lb, ub)
+            )
 
     def __init__(self, name, expr, lb, ub):
         HOBOExpr.__init__(self, expr)

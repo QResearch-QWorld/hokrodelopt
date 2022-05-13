@@ -134,11 +134,9 @@ class HOBOVar(HOBOExpr):
         self.ub = val
 
     def set_lims(self, lb, ub):
-        if lb is not None and ub is not None and lb > ub:
-            raise ValueError(
-                "The lower bound {} can't be greater than the upper bound {}.".format(lb, ub)
-            )
-
+        self.__is_valid_var_lim(lb)
+        self.__is_valid_var_lim(ub)
+        self._compare_lims(lb, ub)
         self.lb = lb
         self.ub = ub
 

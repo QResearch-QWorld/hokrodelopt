@@ -61,7 +61,7 @@ find and fix the errors.
 |-------------|------------------|--------------------|----------------|
 | `isort`     | `pyproject.toml` | `isort . --check`  | `isort .`      |
 | `black`     | `pyproject.toml` | `black . --check`  | `black .`      |
-| `flake8`    | `.flake8`        | `flake8`           | none           |
+| `flake8`    | `.flake8`        | `flake8 ./**/*.py` | none           |
 | `mypy`      | `pyproject.toml` | `python -m mypy .` | none           | 
 | `pylint`    | `.pylintrc`      | `pylint ./**/*.py` | none           |
 

@@ -7,4 +7,4 @@ enable=spelling,
 
 [SPELLING]
 spelling-dict=en_US
-spelling-ignore-words=hokrodelopt
+spelling-private-dict-file=wordlist.txt
